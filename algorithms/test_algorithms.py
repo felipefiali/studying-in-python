@@ -8,6 +8,10 @@ from algorithms.christmas_tree import *
 from data_structures.queue_with_stacks import *
 from data_structures.trie import *
 from algorithms.shortest_substring_with_strings import *
+from algorithms.longest_increasing_sub_array import *
+from algorithms.biggest_number_possible import *
+from algorithms.next_bigger_number import *
+from algorithms.string_edit_distance import *
 
 
 class TestAlgorithms(TestCase):
@@ -135,4 +139,37 @@ class TestAlgorithms(TestCase):
         expected_shortest = 'a big str'
 
         self.assertEqual(expected_shortest, actual_shortest)
+
+    def test_shortest_string_smart(self):
+        input_string = 'this is a biga string'
+        substring_list = ['this', 'is']
+
+        expected_shortest = 'this'
+
+        actual_shortest = shortest_substring_with_strings_smart_approach(input_string, substring_list)
+
+        self.assertEqual(expected_shortest, actual_shortest)
+
+    def test_longest_increasing_sub_array(self):
+        self.assertSequenceEqual([1, 2, 3, 4], longest_increasing_sub_array([1, 2, 3, 1, 2, 3, 4]))
+        self.assertSequenceEqual([1, 9, 10], longest_increasing_sub_array([1, 9, 10, 1]))
+        self.assertSequenceEqual([1, 2], longest_increasing_sub_array([1, 2]))
+        self.assertSequenceEqual([1, 1], longest_increasing_sub_array([1, 1]))
+        self.assertSequenceEqual([1], longest_increasing_sub_array([1, 0]))
+
+    def test_get_biggest_number(self):
+        self.assertEqual(977321, biggest_number_possible(719273))
+
+    def test_get_next_bigger_number(self):
+        self.assertEqual(426238, next_bigger_number(423862))
+        self.assertEqual(121, next_bigger_number(112))
+
+    def test_get_string_edit_distance(self):
+        self.assertEqual(6, get_edit_distance('esse aqui eh um exemplo', 'esse aqui é outro exemplo'))
+        self.assertEqual(1, get_edit_distance('aqui', 'aqui1'))
+        self.assertEqual(2, get_edit_distance('aqui', '12aqui'))
+        self.assertEqual(2, get_edit_distance('aqui', 'aq12ui'))
+        self.assertEqual(2, get_edit_distance('aqui', 'aqui12'))
+
+
 
