@@ -15,7 +15,7 @@ from algorithms.next_bigger_number import *
 from algorithms.string_edit_distance import *
 from algorithms.longest_substring_unique_characters import *
 from algorithms.sub_array_with_given_sum import *
-
+from algorithms.subset_that_sums_to_target import *
 
 
 class TestAlgorithms(TestCase):
@@ -211,6 +211,10 @@ class TestAlgorithms(TestCase):
 
         self.assertSequenceEqual([3, 5], get_sub_array_that_sums_to_target(target, [1, 3, 5, 10, 11]))
         self.assertSequenceEqual([8], get_sub_array_that_sums_to_target(target, [1, 99, 8]))
+
+    def test_can_subset_sum(self):
+        self.assertTrue(has_subset_that_sums([1, 2, 3], 3))
+        self.assertFalse(has_subset_that_sums([99, 2, 2], 3))
 
 
 
