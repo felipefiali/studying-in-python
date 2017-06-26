@@ -1,7 +1,7 @@
 def check_for_sum_in_two_unique_numbers(array, target):
     """
     Given an array of unique integers, and a target T, check if it is possible to reach that value
-    with two numbers in the array.
+    with two unique numbers in the array.
     """
 
     hash_table = {}

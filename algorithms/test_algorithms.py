@@ -7,11 +7,13 @@ from algorithms.merge_ordered_arrays import *
 from algorithms.christmas_tree import *
 from data_structures.queue_with_stacks import *
 from data_structures.trie import *
+from data_structures.lru import LRUCache
 from algorithms.shortest_substring_with_strings import *
 from algorithms.longest_increasing_sub_array import *
 from algorithms.biggest_number_possible import *
 from algorithms.next_bigger_number import *
 from algorithms.string_edit_distance import *
+
 
 
 class TestAlgorithms(TestCase):
@@ -166,6 +168,35 @@ class TestAlgorithms(TestCase):
 
     def test_get_string_edit_distance(self):
         self.assertEqual(6, get_edit_distance('esse aqui eh um exemplo', 'esse aqui é outro exemplo'))
+
+    def test_lru_cache_discards_on_put(self):
+        lru = LRUCache(3)
+
+        lru.put(1, 10)
+        lru.put(2, 10)
+        lru.put(3, 10)
+
+        lru.put(4, 10)
+
+        self.assertTrue(1 not in lru.items)
+
+        lru.put(5, 10)
+
+        self.assertTrue(2 not in lru.items)
+
+    def test_lru_cache_prioritizes_on_get(self):
+        lru = LRUCache(3)
+
+        lru.put(1, 10)
+        lru.put(2, 10)
+        lru.put(3, 10)
+
+        lru.get(1)
+
+        lru.put(4, 10)
+
+        self.assertTrue(2 not in lru.items)
+
 
 
 
