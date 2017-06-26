@@ -14,6 +14,7 @@ from algorithms.biggest_number_possible import *
 from algorithms.next_bigger_number import *
 from algorithms.string_edit_distance import *
 from algorithms.longest_substring_unique_characters import *
+from algorithms.sub_array_with_given_sum import *
 
 
 
@@ -204,6 +205,13 @@ class TestAlgorithms(TestCase):
         expected_value = 'defghij'
 
         self.assertEqual(expected_value, get_longest_substring_with_unique_characters(input_string))
+
+    def test_get_sub_array_with_given_sum(self):
+        target = 8
+
+        self.assertSequenceEqual([3, 5], get_sub_array_that_sums_to_target(target, [1, 3, 5, 10, 11]))
+        self.assertSequenceEqual([8], get_sub_array_that_sums_to_target(target, [1, 99, 8]))
+
 
 
 
