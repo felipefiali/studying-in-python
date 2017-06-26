@@ -13,6 +13,7 @@ from algorithms.longest_increasing_sub_array import *
 from algorithms.biggest_number_possible import *
 from algorithms.next_bigger_number import *
 from algorithms.string_edit_distance import *
+from algorithms.longest_substring_unique_characters import *
 
 
 
@@ -196,6 +197,13 @@ class TestAlgorithms(TestCase):
         lru.put(4, 10)
 
         self.assertTrue(2 not in lru.items)
+
+    def test_get_longest_substring_unique_chars(self):
+        input_string = 'abcddefghij'
+
+        expected_value = 'defghij'
+
+        self.assertEqual(expected_value, get_longest_substring_with_unique_characters(input_string))
 
 
 
