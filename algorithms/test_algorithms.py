@@ -166,10 +166,7 @@ class TestAlgorithms(TestCase):
 
     def test_get_string_edit_distance(self):
         self.assertEqual(6, get_edit_distance('esse aqui eh um exemplo', 'esse aqui é outro exemplo'))
-        self.assertEqual(1, get_edit_distance('aqui', 'aqui1'))
-        self.assertEqual(2, get_edit_distance('aqui', '12aqui'))
-        self.assertEqual(2, get_edit_distance('aqui', 'aq12ui'))
-        self.assertEqual(2, get_edit_distance('aqui', 'aqui12'))
+
 
 
 
