@@ -216,6 +216,12 @@ class TestAlgorithms(TestCase):
         self.assertTrue(has_subset_that_sums([1, 2, 3], 3))
         self.assertFalse(has_subset_that_sums([99, 2, 2], 3))
 
+    def test_find_item_in_rotated_sorted_array(self):
+        rotated_array = [7, 8, 9, 1, 2, 3, 4]
+        target = 8
+
+        self.assertEqual(1, find_item_in_rotated_sorted_array(rotated_array, 0, len(rotated_array) - 1, target))
+
 
 
 
