@@ -18,7 +18,7 @@ from algorithms.sub_array_with_given_sum import *
 from algorithms.subset_that_sums_to_target import *
 from algorithms.get_brackets_perms import *
 from algorithms.find_path_between_nodes import *
-
+from algorithms.count_occurrences_ordered_array import *
 
 
 class TestAlgorithms(TestCase):
@@ -248,4 +248,9 @@ class TestAlgorithms(TestCase):
 
         self.assertSequenceEqual(expected, actual)
 
-
+    def test_count_occurrences_in_ordered_array(self):
+        self.assertEqual(3, count_occurrences_ordered_array([1, 1, 1, 3], 1))
+        self.assertEqual(4, count_occurrences_ordered_array([1, 1, 1, 1, 3], 1))
+        self.assertEqual(1, count_occurrences_ordered_array([1, 1, 1, 1, 3], 3))
+        self.assertEqual(1, count_occurrences_ordered_array([1, 1, 1, 3], 3))
+        self.assertEqual(1, count_occurrences_ordered_array([0, 1, 1, 1], 0))
