@@ -2,9 +2,9 @@ from unittest import TestCase
 from algorithms.binary_search import *
 from algorithms.find_numbers_that_sum import *
 from algorithms.cake_eating_problem import *
-from algorithms.heap_sort import *
 from algorithms.merge_ordered_arrays import *
 from algorithms.christmas_tree import *
+from algorithms.heap_sort import *
 from data_structures.queue_with_stacks import *
 from data_structures.trie import *
 from data_structures.lru import LRUCache
@@ -17,10 +17,11 @@ from algorithms.longest_substring_unique_characters import *
 from algorithms.sub_array_with_given_sum import *
 from algorithms.subset_that_sums_to_target import *
 from algorithms.get_brackets_perms import *
+from algorithms.find_path_between_nodes import *
+
 
 
 class TestAlgorithms(TestCase):
-
     def test_binary_search(self):
         ordered_array = [6, 8, 9, 11, 15]
 
@@ -74,12 +75,6 @@ class TestAlgorithms(TestCase):
         self.assertEqual(14, maximize_cake_eating_pleasure([10, -2, 5, -4, 3, -5, 1]))
         self.assertEqual(27, maximize_cake_eating_pleasure([-1, -5, -7, 9, 10, 8]))
         self.assertEqual(0, maximize_cake_eating_pleasure([-1, -2, 1, -7]))
-
-    def test_heap_sort(self):
-        self.assertSequenceEqual(heap_sort([5, 8, 1, 2, 5, 9, 0]), [0, 1, 2, 5, 5, 8, 9])
-        self.assertSequenceEqual(heap_sort([5]), [5])
-        self.assertSequenceEqual(heap_sort([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
-        self.assertSequenceEqual(heap_sort([]), [])
 
     def test_merge_ordered_arrays_happy_path(self):
         array_1 = [1, 9]
@@ -230,7 +225,27 @@ class TestAlgorithms(TestCase):
 
         self.assertSequenceEqual(actual, expected)
 
+    def test_heap_sort(self):
+        self.assertSequenceEqual(heap_sort([5, 8, 1, 2, 5, 9, 0]), [0, 1, 2, 5, 5, 8, 9])
+        self.assertSequenceEqual(heap_sort([5]), [5])
+        self.assertSequenceEqual(heap_sort([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5])
+        self.assertSequenceEqual(heap_sort([]), [])
 
+    def test_find_path_nodes(self):
+        nodes_tuples = []
 
+        expected = ['B', 'T', 'G', 'P', 'M']
+
+        nodes_tuples.append(('G', 'P'))
+        nodes_tuples.append(('B', 'T'))
+        nodes_tuples.append(('P', 'M'))
+        nodes_tuples.append(('T', 'G'))
+
+        start = 'B'
+        end = 'M'
+
+        actual = find_path(nodes_tuples, start, end)
+
+        self.assertSequenceEqual(expected, actual)
 
 
