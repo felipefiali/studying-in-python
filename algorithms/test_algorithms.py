@@ -16,6 +16,7 @@ from algorithms.string_edit_distance import *
 from algorithms.longest_substring_unique_characters import *
 from algorithms.sub_array_with_given_sum import *
 from algorithms.subset_that_sums_to_target import *
+from algorithms.get_brackets_perms import *
 
 
 class TestAlgorithms(TestCase):
@@ -222,6 +223,12 @@ class TestAlgorithms(TestCase):
 
         self.assertEqual(1, find_item_in_rotated_sorted_array(rotated_array, 0, len(rotated_array) - 1, target))
 
+    def test_add_brackets_recursively(self):
+        actual = get_brackets_perms(3)
+
+        expected = ['((()))', '(()())', '(())()', '()(())', '()()()']
+
+        self.assertSequenceEqual(actual, expected)
 
 
 
