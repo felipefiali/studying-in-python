@@ -19,6 +19,10 @@ from algorithms.subset_that_sums_to_target import *
 from algorithms.get_brackets_perms import *
 from algorithms.find_path_between_nodes import *
 from algorithms.count_occurrences_ordered_array import *
+from algorithms.people_alive_year import *
+from algorithms.find_common_integers_array import *
+from algorithms.check_balanced_brackets import *
+from permutation_as_substring import *
 
 
 class TestAlgorithms(TestCase):
@@ -165,7 +169,7 @@ class TestAlgorithms(TestCase):
         self.assertEqual(121, next_bigger_number(112))
 
     def test_get_string_edit_distance(self):
-        self.assertEqual(6, get_edit_distance('esse aqui eh um exemplo', 'esse aqui é outro exemplo'))
+        self.assertEqual(4, get_edit_distance('esse aqui eh um exemplo', 'esse aqui eh outro exemplo'))
 
     def test_lru_cache_discards_on_put(self):
         lru = LRUCache(3)
@@ -254,3 +258,57 @@ class TestAlgorithms(TestCase):
         self.assertEqual(1, count_occurrences_ordered_array([1, 1, 1, 1, 3], 3))
         self.assertEqual(1, count_occurrences_ordered_array([1, 1, 1, 3], 3))
         self.assertEqual(1, count_occurrences_ordered_array([0, 1, 1, 1], 0))
+
+    def test_people_alive_in_years(self):
+        people = [
+            Person(1970, 1990),
+            Person(2000, 2010),
+            Person(2003, 2011),
+            Person(1870, 1890),
+            Person(1500, 1500),
+            Person(1200, 1201),
+            Person(2015, 2018),
+            Person(1970, 2020),
+            Person(2003, 2030),
+        ]
+
+        self.assertEqual((2003, 4), get_year_most_people_alive(people))
+
+    def test_find_common_numbers_sorted_arrays(self):
+        array1 = [1, 5, 8, 10, 12, 19, 33, 999]
+        array2 = [0, 2, 3, 8, 10, 33, 34, 998, 999, 1000]
+
+        expected = [8, 10, 33, 999]
+        actual = find_common_integers_sorted_arrays(array1, array2)
+
+        self.assertItemsEqual(expected, actual)
+
+    def test_find_common_numbers_unsorted_arrays(self):
+        array1 = [99, 320, 88, 76, 15, 0, 22]
+        array2 = [0, 78, 22, 120, 2, 5, 7, 999, 88, 325]
+
+        expected = [88, 0, 22]
+        actual = find_common_integers_unsorted_arrays(array1, array2)
+
+        self.assertItemsEqual(expected, actual)
+
+    def test_are_brackets_balanced(self):
+        balanced_brackets = '[{({}{}())}]'
+        unbalanced_brackets_uneven = '[{)}]'
+        unbalacend_brackets_even1 = '({[(]]})'
+        unbalacend_brackets_even2 = '({[(()]})'
+
+        self.assertTrue(check_if_brackets_are_balanced(balanced_brackets))
+        self.assertFalse(check_if_brackets_are_balanced(unbalanced_brackets_uneven))
+        self.assertFalse(check_if_brackets_are_balanced(unbalacend_brackets_even1))
+        self.assertFalse(check_if_brackets_are_balanced(unbalacend_brackets_even2))
+
+    def test_get_permutation_substrings(self):
+        small_string = 'abc'
+        big_string = 'aeroabcawpecbalwebcalqlcab'
+
+        expected_perms = ['abc', 'cab', 'bca', 'cba']
+
+        actual_perms = get_permutations_as_substring(small_string, big_string)
+
+        self.assertItemsEqual(expected_perms, actual_perms)
