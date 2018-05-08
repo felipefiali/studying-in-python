@@ -23,6 +23,7 @@ from algorithms.people_alive_year import *
 from algorithms.find_common_integers_array import *
 from algorithms.check_balanced_brackets import *
 from permutation_as_substring import *
+from task_queue import *
 
 
 class TestAlgorithms(TestCase):
@@ -312,3 +313,13 @@ class TestAlgorithms(TestCase):
         actual_perms = get_permutations_as_substring(small_string, big_string)
 
         self.assertItemsEqual(expected_perms, actual_perms)
+
+    def test_task_queue(self):
+        tasks = [1, 1, 2, 1]
+        cooldown = 2
+
+        expected_cycles = 7
+
+        actual_cycles = count_cycles_for_task_queue(tasks, cooldown)
+
+        self.assertEqual(actual_cycles, expected_cycles)
