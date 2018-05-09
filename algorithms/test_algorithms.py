@@ -24,6 +24,7 @@ from algorithms.find_common_integers_array import *
 from algorithms.check_balanced_brackets import *
 from permutation_as_substring import *
 from task_queue import *
+from check_palindrome_removing_1_char import *
 
 
 class TestAlgorithms(TestCase):
@@ -323,3 +324,14 @@ class TestAlgorithms(TestCase):
         actual_cycles = count_cycles_for_task_queue(tasks, cooldown)
 
         self.assertEqual(actual_cycles, expected_cycles)
+
+    def test_palindrome_removing_char(self):
+        self.assertTrue(check_if_palindrome_removing_1_char('madam'))
+        self.assertTrue(check_if_palindrome_removing_1_char('madabm'))
+        self.assertTrue(check_if_palindrome_removing_1_char('mbadam'))
+        self.assertTrue(check_if_palindrome_removing_1_char('maddabm'))
+        self.assertTrue(check_if_palindrome_removing_1_char('mbaddam'))
+        self.assertFalse(check_if_palindrome_removing_1_char('abc'))
+        self.assertTrue(check_if_palindrome_removing_1_char('madbam'))
+        self.assertTrue(check_if_palindrome_removing_1_char('mabdam'))
+        self.assertFalse(check_if_palindrome_removing_1_char('mzadaxm'))
