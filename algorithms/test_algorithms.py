@@ -156,6 +156,16 @@ class TestAlgorithms(TestCase):
 
         self.assertEqual(expected_shortest, actual_shortest)
 
+    def test_shortest_string_smart_multiple(self):
+        input_string = 'abcfaeecb'
+        substring_list = ['a', 'b', 'c']
+
+        expected_shortest = 'abc'
+
+        actual_shortest = shortest_substring_with_strings_smart_approach(input_string, substring_list)
+
+        self.assertEqual(expected_shortest, actual_shortest)
+
     def test_longest_increasing_sub_array(self):
         self.assertSequenceEqual([1, 2, 3, 4], longest_increasing_sub_array([1, 2, 3, 1, 2, 3, 4]))
         self.assertSequenceEqual([1, 9, 10], longest_increasing_sub_array([1, 9, 10, 1]))
@@ -335,3 +345,4 @@ class TestAlgorithms(TestCase):
         self.assertTrue(check_if_palindrome_removing_1_char('madbam'))
         self.assertTrue(check_if_palindrome_removing_1_char('mabdam'))
         self.assertFalse(check_if_palindrome_removing_1_char('mzadaxm'))
+        self.assertFalse(check_if_palindrome_removing_1_char('xovos'))

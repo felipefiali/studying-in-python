@@ -9,10 +9,11 @@ def shortest_substring_with_strings_smart_approach(input_string, substring_list)
 
     for end in range(len(input_string)):
         if all_substrings_present(substring_list, input_string, start, end):
-            best_start = start
-            best_end = end
+            if best_end - best_start > end - start:
+                best_start = start
+                best_end = end
 
-            while start < end:
+            while start < best_end:
                 start += 1
 
                 if all_substrings_present(substring_list, input_string, start, end):
@@ -20,7 +21,7 @@ def shortest_substring_with_strings_smart_approach(input_string, substring_list)
                 else:
                     break
 
-    return input_string[best_start:best_end]
+    return input_string[best_start:best_end + 1]
 
 
 def shortest_substring_with_strings_brute_force(input_string, substring_list):
@@ -39,8 +40,8 @@ def shortest_substring_with_strings_brute_force(input_string, substring_list):
                     best_start = start
                     best_end = end
 
-    return input_string[best_start:best_end]
+    return input_string[best_start:best_end + 1]
 
 
 def all_substrings_present(substring_list, sample_input, start, end):
-    return all(substring in sample_input[start:end] for substring in substring_list)
+    return all(substring in sample_input[start:end + 1] for substring in substring_list)
