@@ -24,6 +24,7 @@ from algorithms.people_alive_year import *
 from algorithms.find_common_integers_array import *
 from algorithms.check_balanced_brackets import *
 from algorithms.find_average_on_level_binary_tree import *
+from algorithms.find_position_of_max_element import *
 from permutation_as_substring import *
 from task_queue import *
 from check_palindrome_removing_1_char import *
@@ -374,3 +375,10 @@ class TestAlgorithms(TestCase):
         expected = [4, 8, 6, 6, 2]
 
         self.assertEqual(expected, actual, 'average array per level does not match')
+
+    def test_find_positions_of_max_element(self):
+        numbers = [10, 9, 20, 5, 20, 8, 20]
+        possible_results = [2, 4, 6]
+
+        actual = find_position_of_max_element(numbers)
+        self.assertIn(actual, possible_results)
