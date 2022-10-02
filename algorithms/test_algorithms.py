@@ -8,6 +8,7 @@ from algorithms.heap_sort import *
 from data_structures.queue_with_stacks import *
 from data_structures.trie import *
 from data_structures.lru import LRUCache
+from data_structures.binary_tree import *
 from algorithms.shortest_substring_with_strings import *
 from algorithms.longest_increasing_sub_array import *
 from algorithms.biggest_number_possible import *
@@ -22,6 +23,7 @@ from algorithms.count_occurrences_ordered_array import *
 from algorithms.people_alive_year import *
 from algorithms.find_common_integers_array import *
 from algorithms.check_balanced_brackets import *
+from algorithms.find_average_on_level_binary_tree import *
 from permutation_as_substring import *
 from task_queue import *
 from check_palindrome_removing_1_char import *
@@ -346,3 +348,29 @@ class TestAlgorithms(TestCase):
         self.assertTrue(check_if_palindrome_removing_1_char('mabdam'))
         self.assertFalse(check_if_palindrome_removing_1_char('mzadaxm'))
         self.assertFalse(check_if_palindrome_removing_1_char('xovos'))
+
+    def test_average_on_binary_tree_levels(self):
+        root = TreeNode(4)
+
+        first_left = TreeNode(7)
+        first_right = TreeNode(9)
+        root.left = first_left
+        root.right = first_right
+
+        second_left_left = TreeNode(10)
+        second_left_right = TreeNode(2)
+        second_right_right = TreeNode(6)
+
+        first_left.left = second_left_left
+        first_left.right = second_left_right
+        first_right.right = second_right_right
+
+        third_right = TreeNode(6)
+        second_left_right.right = third_right
+
+        third_right.left = TreeNode(2)
+
+        actual = find_average_amount_on_binary_tree_levels(root)
+        expected = [4, 8, 6, 6, 2]
+
+        self.assertEqual(expected, actual, 'average array per level does not match')
