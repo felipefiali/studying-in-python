@@ -394,3 +394,9 @@ class TestAlgorithms(TestCase):
         heap.insert(5)
 
         self.assertSequenceEqual(heap.items, [5, 10, 80, 99])
+
+        heap.extract_min()
+
+        self.assertEqual(heap.items, [10, 99, 80])
+
+

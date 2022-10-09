@@ -5,9 +5,9 @@ class Heap:
     def insert(self, item):
         self.items.append(item)
 
-        self.min_heapify()
+        self.heapify_up()
 
-    def min_heapify(self):
+    def heapify_up(self):
         i = len(self.items) - 1
 
         while _has_parent(i):
@@ -19,7 +19,7 @@ class Heap:
             else:
                 break
 
-    def remove_min(self):
+    def extract_min(self):
         if len(self.items) == 0:
             return None
 
@@ -28,9 +28,37 @@ class Heap:
         self.items[0] = self.items[len(self.items) - 1]
         self.items.pop()
 
-        self.min_heapify()
+        self.heapify_down()
 
         return min_value
+
+    def heapify_down(self):
+        i = 0
+
+        while self._has_left_child(i):
+            smaller_index = _get_left_index(i)
+
+            if self._has_right_child(i) and self.items[_get_right_index(i)] < self.items[_get_left_index(i)]:
+                smaller_index = _get_right_index(i)
+
+            if self.items[smaller_index] < self.items[i]:
+                temp = self.items[i]
+                self.items[i] = self.items[smaller_index]
+                self.items[smaller_index] = temp
+
+                i = smaller_index
+            else:
+                break
+
+    def _has_left_child(self, i):
+        left_child_index = _get_left_index(i)
+
+        return left_child_index < len(self.items)
+
+    def _has_right_child(self, i):
+        right_child_index = _get_right_index(i)
+
+        return right_child_index < len(self.items)
 
     def print(self):
         print(self.items)
@@ -46,3 +74,9 @@ def _has_parent(i):
     return parent >= 0
 
 
+def _get_left_index(i):
+    return (2 * i) + 1
+
+
+def _get_right_index(i):
+    return (2 * i) + 2
