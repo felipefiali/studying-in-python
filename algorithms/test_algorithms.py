@@ -26,6 +26,7 @@ from algorithms.find_common_integers_array import *
 from algorithms.check_balanced_brackets import *
 from algorithms.find_average_on_level_binary_tree import *
 from algorithms.find_position_of_max_element import *
+from algorithms.meeting_rooms_required import *
 from permutation_as_substring import *
 from task_queue import *
 from check_palindrome_removing_1_char import *
@@ -399,4 +400,9 @@ class TestAlgorithms(TestCase):
 
         self.assertEqual(heap.items, [10, 99, 80])
 
+    def test_number_of_meeting_rooms(self):
+        meetings = [Meeting(0, 30), Meeting(5, 10), Meeting(15, 20)]
 
+        rooms = get_number_of_rooms_needed(meetings)
+
+        self.assertEqual(2, rooms)

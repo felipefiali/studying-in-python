@@ -50,6 +50,10 @@ class Heap:
             else:
                 break
 
+    def peek_min(self):
+        if len(self.items) > 0:
+            return self.items[0]
+
     def _has_left_child(self, i):
         left_child_index = _get_left_index(i)
 
