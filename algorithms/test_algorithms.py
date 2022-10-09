@@ -9,6 +9,7 @@ from data_structures.queue_with_stacks import *
 from data_structures.trie import *
 from data_structures.lru import LRUCache
 from data_structures.binary_tree import *
+from data_structures.min_heap import *
 from algorithms.shortest_substring_with_strings import *
 from algorithms.longest_increasing_sub_array import *
 from algorithms.biggest_number_possible import *
@@ -382,3 +383,14 @@ class TestAlgorithms(TestCase):
 
         actual = find_position_of_max_element(numbers)
         self.assertIn(actual, possible_results)
+
+    def test_min_heap(self):
+        heap = Heap()
+
+        heap.insert(99)
+        heap.insert(80)
+        heap.insert(10)
+
+        heap.insert(5)
+
+        self.assertSequenceEqual(heap.items, [5, 10, 80, 99])
