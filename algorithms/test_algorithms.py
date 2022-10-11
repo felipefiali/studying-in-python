@@ -27,6 +27,7 @@ from algorithms.check_balanced_brackets import *
 from algorithms.find_average_on_level_binary_tree import *
 from algorithms.find_position_of_max_element import *
 from algorithms.meeting_rooms_required import *
+from algorithms.largest_int_one_swap import *
 from permutation_as_substring import *
 from task_queue import *
 from check_palindrome_removing_1_char import *
@@ -406,3 +407,12 @@ class TestAlgorithms(TestCase):
         rooms = get_number_of_rooms_needed(meetings)
 
         self.assertEqual(2, rooms)
+
+    def test_largest_int_one_swap(self):
+        expected = 54321
+        actual = get_largest_int_with_one_swap(52341)
+        self.assertEqual(expected, actual)
+
+        expected = 993
+        actual = get_largest_int_with_one_swap(993)
+        self.assertEqual(expected, actual)
