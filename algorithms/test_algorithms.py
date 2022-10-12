@@ -29,6 +29,7 @@ from algorithms.find_position_of_max_element import *
 from algorithms.meeting_rooms_required import *
 from algorithms.largest_int_one_swap import *
 from algorithms.remove_min_parentheses import *
+from algorithms.sum_range_bst import *
 from permutation_as_substring import *
 from task_queue import *
 from check_palindrome_removing_1_char import *
@@ -433,4 +434,24 @@ class TestAlgorithms(TestCase):
 
         actual = remove_min_parentheses('))((')
         self.assertEqual(expected, actual)
-        
+
+    def test_sum_range_in_bst(self):
+        tree = Tree(TreeNode(10).
+                    with_left(TreeNode(5).
+                              with_left(TreeNode(3).
+                                        with_left(TreeNode(1))
+                                        ).
+                              with_right(TreeNode(7).
+                                         with_left(TreeNode(6)))
+                              ).
+                    with_right(TreeNode(15).
+                               with_left(TreeNode(13)).
+                               with_right(TreeNode(18))
+                               )
+                    )
+
+        expected = 23
+
+        actual = sum_items_in_range_in_bst(tree.root, 6, 10)
+
+        self.assertEqual(expected, actual)
