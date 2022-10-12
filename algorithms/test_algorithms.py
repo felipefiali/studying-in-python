@@ -28,6 +28,7 @@ from algorithms.find_average_on_level_binary_tree import *
 from algorithms.find_position_of_max_element import *
 from algorithms.meeting_rooms_required import *
 from algorithms.largest_int_one_swap import *
+from algorithms.remove_min_parentheses import *
 from permutation_as_substring import *
 from task_queue import *
 from check_palindrome_removing_1_char import *
@@ -416,3 +417,20 @@ class TestAlgorithms(TestCase):
         expected = 993
         actual = get_largest_int_with_one_swap(993)
         self.assertEqual(expected, actual)
+
+    def test_remove_min_parentheses(self):
+        expected = 'lee(t(c)o)de'
+
+        actual = remove_min_parentheses('lee(t(c)o)de)')
+        self.assertEqual(expected, actual)
+
+        expected = 'ab(c)d'
+
+        actual = remove_min_parentheses('a)b(c)d')
+        self.assertEqual(expected, actual)
+
+        expected = ''
+
+        actual = remove_min_parentheses('))((')
+        self.assertEqual(expected, actual)
+        
